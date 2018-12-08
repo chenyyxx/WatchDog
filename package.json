@@ -13,7 +13,8 @@
     "react-native-gesture-handler": "^1.0.10",
     "react-native-paper": "^2.2.8",
     "react-navigation": "^3.0.6",
-    "react-navigation-material-bottom-tabs": "^1.0.0"
+    "react-navigation-material-bottom-tabs": "^1.0.0",
+    "react-native-circular-progress": "latest"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"
