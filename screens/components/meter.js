@@ -7,19 +7,19 @@
 
 import React, {Component} from "react";
 
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import {AnimatedCircularProgress } from 'react-native-circular-progress';
 import {Text,  StyleSheet} from 'react-native'
 
 
 
 export default class Meter extends Component {
     render() {
-        const fill = 84;
+        this.props.score = 85;
         return (
             <AnimatedCircularProgress
                 size={200}
                 width={8}
-                fill={fill}
+                fill={this.props.score}
                 tintColor="#00e0ff"
                 backgroundColor="#3d5875"
                 lineCap="round"

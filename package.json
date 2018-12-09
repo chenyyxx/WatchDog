@@ -7,10 +7,12 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "expo": "^31.0.2",
+    "expo": "^31.0.6",
+    "expo-cli": "^2.6.8",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-circular-progress": "^1.0.1",
+    "react-native-elements": "^0.19.1",
     "react-native-gesture-handler": "^1.0.10",
     "react-native-navigation": "^2.2.0",
     "react-native-paper": "^2.2.8",
