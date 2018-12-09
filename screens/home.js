@@ -6,21 +6,25 @@ import { HeaderBar } from 'react-native-simple-components';
 
 import Meter from "./components/meter"
 import Chart from "./components/chart"
-import customData from '../customData.json';
+import * as Data2014 from '../2014.json';
 
 
 class HomeScreen extends React.Component {
 
-  var Data2014 = require('./../2014.json');
-
   render() {
+      const data2014 = [
+          { quarter: 1, earnings: 13000 },
+          { quarter: 2, earnings: 16500 },
+          { quarter: 3, earnings: 14250 },
+          { quarter: 4, earnings: 19000 }
+      ];
     return (
       <View style={styles.container}>
         <View style={{margin:30}}>
           <Meter score={90} />
         </View>
         <View>
-          <Chart />
+          <Chart data={data2014} />
         </View>
         <View>
           <Icon
