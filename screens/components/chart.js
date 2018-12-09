@@ -7,15 +7,14 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory-native";
 
-const data = [
-    { quarter: 1, earnings: 13000 },
-    { quarter: 2, earnings: 16500 },
-    { quarter: 3, earnings: 14250 },
-    { quarter: 4, earnings: 19000 }
-];
-
 export default class Chart extends React.Component {
     render() {
+        this.props.data=[
+            { quarter: 1, earnings: 13000 },
+            { quarter: 2, earnings: 16500 },
+            { quarter: 3, earnings: 14250 },
+            { quarter: 4, earnings: 19000 }
+        ];
         return (
             <VictoryChart
                 // adding the material theme provided with Victory
@@ -31,7 +30,7 @@ export default class Chart extends React.Component {
                     tickFormat={(x) => (`$${x / 1000}k`)}
                 />
                 <VictoryBar
-                    data={data}
+                    data={this.props.data}
                     x="quarter"
                     y="earnings"
                 />
