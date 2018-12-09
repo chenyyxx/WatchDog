@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
       ];
     return (
       <View style={styles.container}>
-        <View style={{margin:30}}>
+        <View style={{margin:20}}>
           <Meter score={90} />
         </View>
         <View>
