@@ -10,11 +10,13 @@
     "expo": "^31.0.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-circular-progress": "^1.0.1",
     "react-native-gesture-handler": "^1.0.10",
+    "react-native-navigation": "^2.2.0",
     "react-native-paper": "^2.2.8",
+    "react-native-svg": "^8.0.8",
     "react-navigation": "^3.0.6",
-    "react-navigation-material-bottom-tabs": "^1.0.0",
-    "react-native-circular-progress": "latest"
+    "react-navigation-material-bottom-tabs": "^1.0.0"
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0"

@@ -2,8 +2,7 @@ import React from "react";
 import { View, Text, Button, Flexbox } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import Meter from "components/meter"
-import BarChart from "components/chart"
+import Meter from "./components/meter"
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
