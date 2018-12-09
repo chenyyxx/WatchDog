@@ -16,6 +16,7 @@
     "react-native-gesture-handler": "^1.0.10",
     "react-native-navigation": "^2.2.0",
     "react-native-paper": "^2.2.8",
+    "react-native-simple-components": "^2.2.2",
     "react-native-svg": "^8.0.8",
     "react-native-svg-charts": "^5.2.0",
     "react-navigation": "^3.0.6",
