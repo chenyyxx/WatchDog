@@ -4,14 +4,12 @@ import { Icon, Button } from 'react-native-elements';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { HeaderBar } from 'react-native-simple-components';
 
+import * as data2014 from '../2014.json';
 import Meter from "./components/meter"
 import Chart from "./components/chart"
-import customData from '../customData.json';
 
 
 class HomeScreen extends React.Component {
-
-  var Data2014 = require('./../2014.json');
 
   render() {
     return (
