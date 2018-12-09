@@ -3,10 +3,13 @@ import { createBottomTabNavigator, createAppContainer, TabBarBottom } from 'reac
 import HomeScreen from './screens/home';
 import { Icon, Button } from 'react-native-elements';
 import SettingsScreen from './screens/setting';
+import MapScreen from "./screens/map";
 
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
+  Map: MapScreen,
   Settings: SettingsScreen,
+
 },
 {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -14,9 +17,12 @@ const TabNavigator = createBottomTabNavigator({
         const { routeName } = navigation.state;
         if (routeName === 'Home') {
           var iconName = 'home';
+        } else if (routeName === 'Map') {
+          var iconName = 'map';
         } else if (routeName === 'Settings') {
-          var iconName = 'settings';
+            var iconName = 'settings';
         }
+
 
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
