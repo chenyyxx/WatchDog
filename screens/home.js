@@ -8,9 +8,6 @@ import Meter from "./components/meter"
 import Chart from "./components/chart"
 
 class HomeScreen extends React.Component {
-  static navigationOptions =({navigation})=> {
-    return {
-  };
 
   render() {
     return (
