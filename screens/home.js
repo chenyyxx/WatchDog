@@ -6,8 +6,12 @@ import { HeaderBar } from 'react-native-simple-components';
 
 import Meter from "./components/meter"
 import Chart from "./components/chart"
+import customData from '../customData.json';
+
 
 class HomeScreen extends React.Component {
+
+  var Data2014 = require('./../2014.json');
 
   render() {
     return (
@@ -16,12 +20,7 @@ class HomeScreen extends React.Component {
           <Meter score={90} />
         </View>
         <View>
-          <Chart data={[
-              { quarter: 1, earnings: 13000 },
-              { quarter: 2, earnings: 16500 },
-              { quarter: 3, earnings: 14250 },
-              { quarter: 4, earnings: 19000 }
-          ]}/>
+          <Chart />
         </View>
         <View>
           <Icon
@@ -36,6 +35,7 @@ class HomeScreen extends React.Component {
                 { cancelable: true }
               )
             }
+
           />
         </View>
       </View>
@@ -48,10 +48,10 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#e6e6e6",
+        backgroundColor: "#82E0AA",
         alignItems: 'center',
         borderTopWidth: 50,
-        borderTopColor: '#B1FFFA',
+        borderTopColor: '#D5F5E3',
     },
 });
 
