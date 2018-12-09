@@ -3,58 +3,48 @@
 // 2. https://github.com/capitalone/react-native-pathjs-charts
 // 3. https://github.com/tomauty/react-native-chart
 
-import React from 'react'
-import { StackedBarChart } from 'react-native-svg-charts'
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory-native";
 
-export default class BarChart extends React.PureComponent {
+const data = [
+    { quarter: 1, earnings: 13000 },
+    { quarter: 2, earnings: 16500 },
+    { quarter: 3, earnings: 14250 },
+    { quarter: 4, earnings: 19000 }
+];
 
+export default class Chart extends React.Component {
     render() {
-
-        const data = [
-            {
-                month: new Date(2015, 0, 1),
-                apples: 3840,
-                bananas: 1920,
-                cherries: 960,
-                dates: 400,
-                oranges: 400,
-            },
-            {
-                month: new Date(2015, 1, 1),
-                apples: 1600,
-                bananas: 1440,
-                cherries: 960,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 2, 1),
-                apples: 640,
-                bananas: 960,
-                cherries: 3640,
-                dates: 400,
-            },
-            {
-                month: new Date(2015, 3, 1),
-                apples: 3320,
-                bananas: 480,
-                cherries: 640,
-                dates: 400,
-            },
-        ]
-
-        const colors = [ '#7b4173', '#a55194', '#ce6dbd', '#de9ed6' ]
-        const keys   = [ 'apples', 'bananas', 'cherries', 'dates' ]
-
         return (
-            <StackedBarChart
-                style={ { height: 200 } }
-                keys={ keys }
-                colors={ colors }
-                data={ data }
-                showGrid={ false }
-                contentInset={ { top: 30, bottom: 30 } }
-            />
+            <VictoryChart
+                // adding the material theme provided with Victory
+                theme={VictoryTheme.material}
+                domainPadding={20}
+            >
+                <VictoryAxis
+                    tickValues={[1, 2, 3, 4]}
+                    tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]}
+                />
+                <VictoryAxis
+                    dependentAxis
+                    tickFormat={(x) => (`$${x / 1000}k`)}
+                />
+                <VictoryBar
+                    data={data}
+                    x="quarter"
+                    y="earnings"
+                />
+            </VictoryChart>
         )
     }
-
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5fcff"
+    }
+});
