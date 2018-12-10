@@ -27,7 +27,7 @@ export default class HomeScreen extends Component {
     let sum=100;
     for(let i = 0; i < 21532; i++){
       if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<0.1){
-        sum*=0.999985;
+        sum*=0.999988;
       }
     }
     return sum;
