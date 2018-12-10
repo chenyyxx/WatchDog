@@ -36,7 +36,6 @@ class MapScreen extends React.Component {
         };
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Text>My Map</Text>
                 <Map region={region} />
             </View>
         );
