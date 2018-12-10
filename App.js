@@ -5,6 +5,7 @@ import { Icon, Button } from 'react-native-elements';
 import SettingsScreen from './screens/setting';
 import MapScreen from "./screens/map";
 
+
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Map: MapScreen,
