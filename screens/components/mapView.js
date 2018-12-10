@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert} from "react-native";
 import { MapView } from "expo";
 
+
 const Marker = MapView.Marker;
 
 export default class Map extends Component {
