@@ -15,30 +15,26 @@ export default class HomeScreen extends Component {
     super(props);
 
     this.state = {
-      latitude: 40,
-      longitude: 95,
-      safetyIndex: 12,
+      latitude: 44.972,
+      longitude: -93.271,
+      safetyIndex: 0,
       error: null,
       loading: true,
     };
   }
 
   getInd(){
-    let sum=97;
+    let sum=100;
     for(let i = 0; i < 21532; i++){
       if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<0.1){
-        sum*=0.999;
-      }
-      else{
-        console.log(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5));
+        sum*=0.999985;
       }
     }
-    console.log(Data2014[1].Latitude);
     return sum;
   }
 
   render() {
-    const loading='Loading Crime Data. The Next Number Is Not Accurate!';
+    const loading='Loading crime data. This may take a while. The first number will not be accurate!';
     navigator.geolocation.getCurrentPosition(
   position => {
     this.setState({
@@ -58,11 +54,11 @@ export default class HomeScreen extends Component {
           { quarter: 4, earnings: 19000 }
       ];
     return (
-      <View style={styles.container}>
-        <Text>
+      <View style={this.state.safetyIndex>80?styles.container_safe:styles.container_dangerous}>
+        <Text style={{fontSize:15}}>
           Latitude: {this.state.latitude.toFixed(3)}
         </Text>
-        <Text>
+        <Text style={{fontSize:15}}>
           Longitude: {this.state.longitude.toFixed(3)}
         </Text>
         <View style={{margin:20}}>
@@ -93,11 +89,18 @@ export default class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#82E0AA",
-        alignItems: 'center',
-        borderTopWidth: 50,
-        borderTopColor: '#D5F5E3',
+    container_safe: {
+      flex: 1,
+      backgroundColor: "#82E0AA",
+      alignItems: 'center',
+      borderTopWidth: 50,
+      borderTopColor: '#D5F5E3',
     },
+    container_dangerous: {
+      flex: 1,
+      backgroundColor: "#FF6363",
+      alignItems: 'center',
+      borderTopWidth: 50,
+      borderTopColor: '#D5F5E3',
+  },
 });
