@@ -15,11 +15,7 @@ class MapScreen extends React.Component {
             loading: true,
         };
     }
-    state = {
-        region: { latitude: 37.78825, longitude: -122.4324, latitudeDelta: 0.0922, longitudeDelta: 0.0421},
-        locationResult: null,
-        location: {coords:{latitude:37.78825,longitude:-122.4324}},
-    };
+
     render() {
         navigator.geolocation.getCurrentPosition(
             position => {
@@ -32,11 +28,11 @@ class MapScreen extends React.Component {
             error => Alert.alert(error.message),
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
-        const region = {
+        let region = {
             latitude: this.state.latitude,
             longitude: this.state.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421
+            latitudeDelta: 0.00722,
+            longitudeDelta: 0.00321
         };
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
