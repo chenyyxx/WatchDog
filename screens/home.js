@@ -18,8 +18,8 @@ export default class HomeScreen extends Component {
     super(props);
 
     this.state = {
-      latitude: 44.972,
-      longitude: -93.271,
+      latitude: 44.979,
+      longitude: -93.278,
       safetyIndex: 0,
       error: null,
       loading: true,
