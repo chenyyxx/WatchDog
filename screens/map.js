@@ -1,8 +1,9 @@
 import React from "react";
-import {View, Text, Alert} from "react-native";
+import {StyleSheet, View, Text, Alert} from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Map from "./components/mapView"
 import { Location, Permissions } from 'expo'
+import MapMarker from "react-native-maps/lib/components/MapMarker";
 
 
 class MapScreen extends React.Component {
@@ -34,11 +35,21 @@ class MapScreen extends React.Component {
             latitudeDelta: 0.00722,
             longitudeDelta: 0.00321
         };
+        let position = {
+            latitude: this.state.latitude,
+            longitude: this.state.longitude,
+        };
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                <Map region={region} />
+                <Map region={region} position={position}/>
             </View>
         );
     }
 }
+
+
+
+
+
 export default MapScreen;
+
