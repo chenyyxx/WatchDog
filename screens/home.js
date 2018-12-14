@@ -12,6 +12,8 @@ import * as Data2014 from '../2014.json';//21532
 
 const Num1miles = 3;
 const radius=0.1;
+const RAD = Math.PI/ 180.0;
+const EARTH_RADIUS = 6378137;
 
 export default class HomeScreen extends Component {
   constructor(props){
@@ -38,12 +40,27 @@ export default class HomeScreen extends Component {
     });
     this.setState({fontLoaded:true});
   }
+
+  getDistance(lng1, lat1, lng2, lat2) {
+      let radLat1 = lat1*RAD;
+      let radLat2 = lat2*RAD;
+      let a = radLat1 - radLat2;
+      let b = (lng1 - lng2)*RAD;
+      let s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) + Math.cos(radLat1)*Math.cos(radLat2)*Math.pow(Math.sin(b/2),2)));
+      s = s * EARTH_RADIUS;
+      s = Math.round(s * 10000) / 10000;
+      return s;
+  }
+
   getInd(){
     let sum=100;
     for(let i = 0; i < 21532; i++){
-      if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
-        sum*=0.999988;
-      }
+        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude.Latitude,this.state.longitude,this.state.latitude)<1.0){
+            sum*=0.999988
+        }
+      // if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+      //   sum*=0.999988;
+      // }
     }
     return sum;
   }
