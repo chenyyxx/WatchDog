@@ -26,16 +26,19 @@ export default class MapScreen extends React.Component {
     static renderList(){
         let list=[];
         for (let i = 0; i < 21532; i++) {
-            let crimeDate=Data2014[i].BeginDate;
-            if (crimeDate)
-            list.push({
-                key: i,
-                title: Data2014[i].Description,
-                coordinates:{
-                    latitude: Data2014[i].Latitude,
-                    longitude: Data2014[i].Longitude,
-                }
-            })
+            let diff= new Date()-new Date(Data2014[i].BeginDate);
+            let monthDiff=(parseFloat(diff)/(8.64*Math.pow(10,7)))-4*365;
+
+            if ( monthDiff <= 30.0 ){
+                list.push({
+                    key: i,
+                    title: Data2014[i].Description,
+                    coordinates:{
+                        latitude: Data2014[i].Latitude,
+                        longitude: Data2014[i].Longitude,
+                    }
+                })
+            }
         }
         return list
     };
