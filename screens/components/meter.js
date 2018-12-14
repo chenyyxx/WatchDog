@@ -14,13 +14,13 @@ import {Text,  StyleSheet} from 'react-native'
 
 export default class Meter extends Component {
     render() {
-        this.props.score = 85;
+        this.props.score = 1;
         return (
             <AnimatedCircularProgress
                 size={200}
                 width={8}
                 fill={this.props.score}
-                tintColor="#00e0ff"
+                tintColor={this.props.score>90?"#39FF21":this.props.score>80?"#F7FF00":"#FF0000"}
                 backgroundColor="#3d5875"
                 lineCap="round"
             >

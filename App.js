@@ -2,14 +2,14 @@ import React from 'react';
 import { createBottomTabNavigator, createAppContainer, TabBarBottom } from 'react-navigation';
 import HomeScreen from './screens/home';
 import { Icon, Button } from 'react-native-elements';
-import SettingsScreen from './screens/setting';
+import InfoScreen from './screens/info';
 import MapScreen from "./screens/map";
 
 
 const TabNavigator = createBottomTabNavigator({
   Home: HomeScreen,
   Map: MapScreen,
-  Settings: SettingsScreen,
+  Info: InfoScreen,
 
 },
 {
@@ -20,8 +20,8 @@ const TabNavigator = createBottomTabNavigator({
           var iconName = 'home';
         } else if (routeName === 'Map') {
           var iconName = 'map';
-        } else if (routeName === 'Settings') {
-            var iconName = 'settings';
+        } else if (routeName === 'Info') {
+            var iconName = 'info';
         }
 
 

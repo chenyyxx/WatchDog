@@ -29,6 +29,7 @@ export default class Chart extends React.Component {
                 <VictoryAxis
                     tickValues={[1, 2, 3, 4, 5, 6]}
                     tickFormat={["Murder", "Robbery", "Domestic Assault", "Theft","Assault", "Sexual Assault"]}
+                    style={{tickLabels: {fontSize: 15, padding: 5,angle:20}}}
                 />
                 <VictoryAxis
                     dependentAxis
