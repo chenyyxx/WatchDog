@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert} from "react-native";
+import { View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert, ScrollView} from "react-native";
 import { Icon, Button } from 'react-native-elements';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { HeaderBar } from 'react-native-simple-components';
@@ -152,41 +152,43 @@ export default class HomeScreen extends Component {
           { quarter: 6, earnings: this.SexualAssault() }
       ];
     return (
-      <View style={styles.container}>
-        <Text style={this.state.fontLoaded?{fontSize:60, fontFamily:"AW", margin:20}:{fontSize:50}}>
-        Watch Dog
-        </Text>
-        <View>
-          <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
-            Latitude: {this.state.latitude.toFixed(3)}
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={this.state.fontLoaded?{fontSize:60, fontFamily:"AW", margin:20}:{fontSize:50}}>
+          Watch Dog
           </Text>
-          <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
-            Longitude: {this.state.longitude.toFixed(3)}
+          <View>
+            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
+              Latitude: {this.state.latitude.toFixed(3)}
+            </Text>
+            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
+              Longitude: {this.state.longitude.toFixed(3)}
+            </Text>
+          </View>
+          <View style={{margin:20}}>
+              <Meter score={this.state.safetyIndex}/>
+          </View>
+          <Text style={{fontSize:20}}>
+            {this.state.loading?loading:null}
           </Text>
-        </View>
-        <View style={{margin:20}}>
-            <Meter score={this.state.safetyIndex}/>
-        </View>
-        <Text style={{fontSize:20}}>
-          {this.state.loading?loading:null}
-        </Text>
-      <View>
-        <Chart data={demoData} />
-      </View>
         <View>
-          <Icon
-            name = 'info'
-            onPress = {() =>
-              Alert.alert(
-                'Safety Alert',
-                'The index shown is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
-                [
-                  {text: 'Back'},
-                ],
-                { cancelable: true }
-              )}/>
+          <Chart data={demoData} />
         </View>
-      </View>
+          <View>
+            <Icon
+              name = 'info'
+              onPress = {() =>
+                Alert.alert(
+                  'Safety Alert',
+                  'The index shown is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
+                  [
+                    {text: 'Back'},
+                  ],
+                  { cancelable: true }
+                )}/>
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 }
