@@ -26,6 +26,8 @@ export default class MapScreen extends React.Component {
     static renderList(){
         let list=[];
         for (let i = 0; i < 21532; i++) {
+            let crimeDate=Data2014[i].BeginDate;
+            if (crimeDate)
             list.push({
                 key: i,
                 title: Data2014[i].Description,
