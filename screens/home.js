@@ -1,12 +1,14 @@
 import React, {Component} from "react";
-import { View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert, ScrollView} from "react-native";
-import { Icon, Button } from 'react-native-elements';
+import {View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert, ScrollView, Dimensions} from "react-native";
+import {Icon, Button, Card, Header} from 'react-native-elements';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 import { HeaderBar } from 'react-native-simple-components';
 
 import Meter from "./components/meter";
 import Chart from "./components/chart";
-import * as Data2014 from '../2014.json';//21532
+import * as Data2014 from '../2014.json';
+import {VictoryLegend} from "victory-native";
+//21532
 
 
 
@@ -169,49 +171,66 @@ export default class HomeScreen extends Component {
     );
     const loading='Loading crime data. This may take a while. The first number will not be accurate!';
     const demoData = [
-        { quarter: 1, earnings: 1+this.murder() },
-        { quarter: 2, earnings: 1+this.RobberyCount() },
-        { quarter: 3, earnings: 1+this.DASLTCount() },
-        { quarter: 4, earnings: 1+this.TheftCount() },
-        { quarter: 5, earnings: 1+this.ASLTCount() },
-        { quarter: 6, earnings: 1+this.SexualAssault() }
+        { x: 1, y: 1+this.murder() },
+        { x: 2, y: 1+this.RobberyCount() },
+        { x: 3, y: 1+this.DASLTCount() },
+        { x: 4, y: 1+this.TheftCount() },
+        { x: 5, y: 1+this.ASLTCount() },
+        { x: 6, y: 1+this.SexualAssault() }
     ];
     return (
       <ScrollView>
+          <Header
+              backgroundColor={"white"}
+              leftComponent={<Icon
+                  name = 'info'
+                  onPress = {() =>
+                      Alert.alert(
+                          'Safety Alert',
+                          'We consider that any score lower than 80 represent a relatively dangerous region. In the Meter, Green shows the high possiblity of safer surroundings while Red means the region is historically dangerous. However, please note that the index is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
+                          [
+                              {text: 'I understand!'},
+                          ],
+                          { cancelable: false }
+                      )}/>}
+              centerComponent={<Text style={this.state.fontLoaded?{fontSize:40, fontFamily:"AW", top:25}:{fontSize:40}}>
+                  Watch Dog
+              </Text>}
+              rightComponent={{ icon: 'home', color: 'black' }}
+          />
         <View style={styles.container}>
           <View>
-          <Text style={this.state.fontLoaded?{fontSize:100, fontFamily:"AW", margin:10}:{fontSize:50}}>
-          Watch Dog
-          </Text>
-          <Icon
-            name = 'info'
-            onPress = {() =>
-              Alert.alert(
-                'Safety Alert',
-                'We consider that any score lower than 80 represent a relatively dangerous region. In the Meter, Green shows the high possiblity of safer surroundings while Red means the region is historically dangerous. However, please note that the index is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
-                [
-                  {text: 'I understand!'},
-                ],
-                { cancelable: false }
-              )}/>
-          </View>
-          <View>
-            <Text style={this.state.fontLoaded?{fontSize:30, fontFamily:"GB"}:{fontSize:30}}>
+            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
               Latitude: {this.state.latitude.toFixed(4)}
             </Text>
-            <Text style={this.state.fontLoaded?{fontSize:30, fontFamily:"GB"}:{fontSize:30}}>
+            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
               Longitude: {this.state.longitude.toFixed(4)}
             </Text>
           </View>
-          <View style={{margin:20}}>
+            <VictoryLegend
+                // styles={{margin:10}}
+                x={10}
+                y={20}
+                orientation="horizontal"
+                symbolSpacer={3}
+                height={40}
+                data={[
+                    { name: "Very Safe", symbol: { fill: "#2ECC71" } },
+                    { name: "Safe", symbol: { fill: "#1ABC9C" } },
+                    { name: "Average", symbol: { fill: "#F1C40F" } },
+                    { name: "Dangerous", symbol: { fill: "#F39C12" } },
+                    { name: "Very Dangerous", symbol:{fill: "#E74C3C"}}
+                ]}
+            />
+          <View >
               <Meter score={this.state.safetyIndex}/>
           </View>
           <Text style={{fontSize:20}}>
             {this.state.loading?loading:null}
           </Text>
-        <View>
-          <Chart data={demoData} />
-        </View>
+          <View style={{margin:20}}>
+              <Chart data={demoData} />
+          </View>
         </View>
       </ScrollView>
     );
@@ -221,10 +240,10 @@ export default class HomeScreen extends Component {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "#EAEAEA",
+      justifyContent: "space-between",
+      backgroundColor: "white",
       alignItems: 'center',
-      borderTopWidth: 50,
-      borderTopColor: '#A3A3A3',
+      borderTopWidth: 20,
+      borderTopColor: 'white',
     },
-
 });

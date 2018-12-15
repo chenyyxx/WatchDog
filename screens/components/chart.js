@@ -5,7 +5,7 @@
 
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { VictoryBar, VictoryChart, VictoryTheme, VictoryAxis } from "victory-native";
+import {VictoryBar, VictoryChart, VictoryTheme, VictoryAxis, VictoryLabel, VictoryLegend} from "victory-native";
 import * as Data2014 from '../../2014.json';//21532
 
 
@@ -13,12 +13,12 @@ export default class Chart extends React.Component {
 
     render() {
         this.props.data=[
-            { quarter: 1, earnings: 13000 },
-            { quarter: 2, earnings: 16500 },
-            { quarter: 3, earnings: 14250 },
-            { quarter: 4, earnings: 19000 },
-            { quarter: 5, earnings: 0},
-            { quarter: 6, earnings: 0}
+            { x: 1, y: 13000 },
+            { x: 2, y: 16500 },
+            { x: 3, y: 14250 },
+            { x: 4, y: 19000 },
+            { x: 5, y: 0},
+            { x: 6, y: 0}
         ];
         return (
             <VictoryChart
@@ -29,15 +29,21 @@ export default class Chart extends React.Component {
                 <VictoryAxis
                     tickValues={[1, 2, 3, 4, 5, 6]}
                     tickFormat={["Murder", "Robbery", "Domestic Assault", "Theft","Assault", "Sexual Assault"]}
-                    style={{tickLabels: {fontSize: 15, padding: 5,angle:20}}}
+                    style={{tickLabels: {fontSize: 12, padding: 15,angle:20}}}
                 />
                 <VictoryAxis
                     dependentAxis
                 />
                 <VictoryBar
                     data={this.props.data}
-                    x="quarter"
-                    y="earnings"
+                    x="x"
+                    y="y"
+                    labels={(d) => (d.y).toFixed(2)}
+                    style={{
+                        labels: { fill: "black" } ,
+                        data: {fill: (d) => d.y>0.6 ? "#E74C3C":(d.y > 0.4 ? "#F39C12" :(d.y > 0.2 ? "#F1C40F" :(d.y > 0.1 ? "#1ABC9C" :"#2ECC71")))}
+                    }}
+                    labelComponent={<VictoryLabel dy={0}/>}
                 />
             </VictoryChart>
         )

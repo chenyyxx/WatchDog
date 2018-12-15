@@ -11,7 +11,9 @@ const SCREEN_WIDTH = width;
 const ASPECT_RATIO = width/height;
 const LATITUDE_DELTA = 0.00722;
 const LONGITUDE_DELTA = LATITUDE_DELTA*ASPECT_RATIO;
-import * as Data2014 from '../2014.json';//21532
+import * as Data2014 from '../2014.json';
+import {Header, Icon} from "react-native-elements";
+//21532
 
 
 
@@ -42,11 +44,27 @@ export default class MapScreen extends React.Component {
         }
         return list
     };
+    async componentDidMount() {
+        await Expo.Font.loadAsync({
+            "Melinda": require('../assets/Melinda.ttf'),
+            "TH3": require('../assets/TH3_MACHINE.ttf'),
+            "AW": require('../assets/AW.ttf'),
+            "G": require('../assets/GatsbyFLF.ttf'),
+            "GB": require('../assets/GatsbyFLF-Bold.ttf'),
+        });
+        this.setState({fontLoaded:true});
+    }
 
 
     render() {
         return (
             <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+                <Header
+                    backgroundColor={"white"}
+                    centerComponent={<Text style={this.state.fontLoaded?{fontSize:40, fontFamily:"AW", top:25}:{fontSize:40}}>
+                        Watch Dog
+                    </Text>}
+                />
                 <MapView
                     style={styles.container}
                     showsUserLocation={true}

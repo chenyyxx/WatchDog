@@ -20,7 +20,7 @@ export default class Meter extends Component {
                 size={200}
                 width={8}
                 fill={this.props.score}
-                tintColor={this.props.score>90?"#39FF21":this.props.score>80?"#F7FF00":"#FF0000"}
+                tintColor={this.props.score>95?"#2ECC71":this.props.score>85?"#1ABC9C":this.props.score>75?"#F1C40F":this.props.score>60?"#F39C12":"#E74C3C"}
                 backgroundColor="#3d5875"
                 lineCap="round"
             >
