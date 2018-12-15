@@ -11,7 +11,7 @@ import * as Data2014 from '../2014.json';//21532
 
 
 const Num1miles = 3;
-const radius=0.1;
+const radius=2000;
 const RAD = Math.PI/ 180.0;
 const EARTH_RADIUS = 6378137;
 
@@ -19,8 +19,8 @@ export default class HomeScreen extends Component {
   constructor(props){
     super(props);
     this.state = {
-      latitude: 44.978399,
-      longitude: -93.271077,
+      latitude: 44.9279,
+      longitude: -93.3087,
       safetyIndex: 10,
       error: null,
       loading: true,
@@ -63,7 +63,7 @@ export default class HomeScreen extends Component {
   getInd(){
     let sum=100;
     for(let i = 0; i < 21532; i++){
-        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<2000){
+        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
             sum*=0.99992
         }
       // if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
@@ -78,7 +78,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="ASLT1"|| Data2014[i].Offense==="ASLT2" || Data2014[i].Offense==="ASLT3" || Data2014[i].Offense==="ASLT4" || Data2014[i].Offense==="DASTR"){
                 sumASLT+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentASLT +=1;
                 }
             }
@@ -91,7 +91,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="DASLT1"|| Data2014[i].Offense==="DASLT2" || Data2014[i].Offense==="DASLT3" ){
                 sumDASLT+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentDASLT +=1;
                 }
             }
@@ -104,7 +104,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="TMVP"|| Data2014[i].Offense==="COMPUT" || Data2014[i].Offense==="THFTSW" || Data2014[i].Offense==="TBLDG" || Data2014[i].Offense==="TFMV" || Data2014[i].Offense==="TFPER" || Data2014[i].Offense==="COINOP" || Data2014[i].Offense==="BIKETF" || Data2014[i]==="AUTOTH" || Data2014[i]==="THEFT" || Data2014[i]==="MVTHEFT" || Data2014[i]==="ONLTHT"){
                 sumTheft+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentTheft +=1;
                 }
             }
@@ -117,7 +117,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="ROBBIZ"|| Data2014[i].Offense==="ROBPER" || Data2014[i].Offense==="ROBPAG" || Data2014[i].Offense==="ASLT4" ){
                 sumRobbery+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentRobbery +=1;
                 }
             }
@@ -131,7 +131,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="CSCR" ){
                 sumSA+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentSA +=1;
                 }
             }
@@ -145,7 +145,7 @@ export default class HomeScreen extends Component {
         for (let i = 0 ; i < 21532; i++){
             if (Data2014[i].Offense==="MURDR" ){
                 sumMurder+=1;
-                if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
+                if(this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<radius){
                     currentMurder +=1;
                 }
             }
@@ -169,12 +169,12 @@ export default class HomeScreen extends Component {
     );
     const loading='Loading crime data. This may take a while. The first number will not be accurate!';
     const demoData = [
-        { quarter: 1, earnings: this.murder() },
-        { quarter: 2, earnings: this.RobberyCount() },
-        { quarter: 3, earnings: this.DASLTCount() },
-        { quarter: 4, earnings: this.TheftCount() },
-        { quarter: 5, earnings: this.ASLTCount() },
-        { quarter: 6, earnings: this.SexualAssault() }
+        { quarter: 1, earnings: 1+this.murder() },
+        { quarter: 2, earnings: 1+this.RobberyCount() },
+        { quarter: 3, earnings: 1+this.DASLTCount() },
+        { quarter: 4, earnings: 1+this.TheftCount() },
+        { quarter: 5, earnings: 1+this.ASLTCount() },
+        { quarter: 6, earnings: 1+this.SexualAssault() }
     ];
     return (
       <ScrollView>
