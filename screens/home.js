@@ -19,8 +19,8 @@ export default class HomeScreen extends Component {
   constructor(props){
     super(props);
     this.state = {
-      latitude: 44.975202,
-      longitude: -93.225762,
+      latitude: 44.978399,
+      longitude: -93.271077,
       safetyIndex: 10,
       error: null,
       loading: true,
@@ -63,8 +63,8 @@ export default class HomeScreen extends Component {
   getInd(){
     let sum=100;
     for(let i = 0; i < 21532; i++){
-        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<3000){
-            sum*=0.999988
+        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<2000){
+            sum*=0.99992
         }
       // if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
       //   sum*=0.999988;
