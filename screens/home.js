@@ -19,8 +19,8 @@ export default class HomeScreen extends Component {
   constructor(props){
     super(props);
     this.state = {
-      latitude: 44.979,
-      longitude: -93.278,
+      latitude: 44.975202,
+      longitude: -93.225762,
       safetyIndex: 10,
       error: null,
       loading: true,
@@ -63,7 +63,7 @@ export default class HomeScreen extends Component {
   getInd(){
     let sum=100;
     for(let i = 0; i < 21532; i++){
-        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude.Latitude,this.state.longitude,this.state.latitude)<1.0){
+        if (this.getDistance(Data2014[i].Longitude,Data2014[i].Latitude,this.state.longitude,this.state.latitude)<3000){
             sum*=0.999988
         }
       // if(Math.pow(Math.pow(Data2014[i].Latitude-this.state.latitude,2)+Math.pow(Data2014[i].Longitude-this.state.longitude,2),0.5)<radius){
@@ -158,8 +158,8 @@ export default class HomeScreen extends Component {
     navigator.geolocation.getCurrentPosition(
       position => {
         this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          //latitude: position.coords.latitude,
+          //longitude: position.coords.longitude,
           safetyIndex: this.getInd(),
           loading: false,
         });
