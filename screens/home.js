@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
     this.state = {
       latitude: 44.979,
       longitude: -93.278,
-      safetyIndex: 0,
+      safetyIndex: 10,
       error: null,
       loading: true,
       fontLoaded:false
@@ -39,6 +39,14 @@ export default class HomeScreen extends Component {
       "GB": require('../assets/GatsbyFLF-Bold.ttf'),
     });
     this.setState({fontLoaded:true});
+    Alert.alert(
+      'Safety Alert',
+      'We consider that any score lower than 80 represent a relatively dangerous region. In the Meter, Green shows the high possiblity of safer surroundings while Red means the region is historically dangerous. However, please note that the index is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
+      [
+        {text: 'I understand!'},
+      ],
+      { cancelable: false }
+    );
   }
 
   getDistance(lng1, lat1, lng2, lat2) {
@@ -160,26 +168,39 @@ export default class HomeScreen extends Component {
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
     const loading='Loading crime data. This may take a while. The first number will not be accurate!';
-      const demoData = [
-          { quarter: 1, earnings: this.murder() },
-          { quarter: 2, earnings: this.RobberyCount() },
-          { quarter: 3, earnings: this.DASLTCount() },
-          { quarter: 4, earnings: this.TheftCount() },
-          { quarter: 5, earnings: this.ASLTCount() },
-          { quarter: 6, earnings: this.SexualAssault() }
-      ];
+    const demoData = [
+        { quarter: 1, earnings: this.murder() },
+        { quarter: 2, earnings: this.RobberyCount() },
+        { quarter: 3, earnings: this.DASLTCount() },
+        { quarter: 4, earnings: this.TheftCount() },
+        { quarter: 5, earnings: this.ASLTCount() },
+        { quarter: 6, earnings: this.SexualAssault() }
+    ];
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={this.state.fontLoaded?{fontSize:60, fontFamily:"AW", margin:20}:{fontSize:50}}>
+          <View>
+          <Text style={this.state.fontLoaded?{fontSize:100, fontFamily:"AW", margin:10}:{fontSize:50}}>
           Watch Dog
           </Text>
+          <Icon
+            name = 'info'
+            onPress = {() =>
+              Alert.alert(
+                'Safety Alert',
+                'We consider that any score lower than 80 represent a relatively dangerous region. In the Meter, Green shows the high possiblity of safer surroundings while Red means the region is historically dangerous. However, please note that the index is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
+                [
+                  {text: 'I understand!'},
+                ],
+                { cancelable: false }
+              )}/>
+          </View>
           <View>
-            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
-              Latitude: {this.state.latitude.toFixed(3)}
+            <Text style={this.state.fontLoaded?{fontSize:30, fontFamily:"GB"}:{fontSize:30}}>
+              Latitude: {this.state.latitude.toFixed(4)}
             </Text>
-            <Text style={this.state.fontLoaded?{fontSize:20, fontFamily:"GB"}:{fontSize:20}}>
-              Longitude: {this.state.longitude.toFixed(3)}
+            <Text style={this.state.fontLoaded?{fontSize:30, fontFamily:"GB"}:{fontSize:30}}>
+              Longitude: {this.state.longitude.toFixed(4)}
             </Text>
           </View>
           <View style={{margin:20}}>
@@ -191,19 +212,6 @@ export default class HomeScreen extends Component {
         <View>
           <Chart data={demoData} />
         </View>
-          <View>
-            <Icon
-              name = 'info'
-              onPress = {() =>
-                Alert.alert(
-                  'Safety Alert',
-                  'The index shown is based only on the history crime data in the region and may not be accurate. Always observe your surroundings, and call 911 in emergency.',
-                  [
-                    {text: 'Back'},
-                  ],
-                  { cancelable: true }
-                )}/>
-          </View>
         </View>
       </ScrollView>
     );

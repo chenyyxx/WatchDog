@@ -14,7 +14,7 @@ import {Text,  StyleSheet} from 'react-native'
 
 export default class Meter extends Component {
     render() {
-        this.props.score = 1;
+        this.props.score = 10;
         return (
             <AnimatedCircularProgress
                 size={200}
