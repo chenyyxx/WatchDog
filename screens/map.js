@@ -52,12 +52,21 @@ export default class MapScreen extends React.Component {
                     showsUserLocation={true}
                     followUserLocation={true}
                     initialRegion={{
-                        latitude: 44.940,
-                        longitude: -93.165,
+                        latitude: 44.978399,
+                        longitude: -93.271077,
                         latitudeDelta: LATITUDE_DELTA,
                         longitudeDelta: LONGITUDE_DELTA
                     }}
                 >
+                    <MapView.Marker
+                        coordinate={{
+                            latitude: 44.978399,
+                            longitude: -93.271077,
+                        }}>
+                        <View style={styles.radius}>
+                            <View style={styles.marker}/>
+                        </View>
+                    </MapView.Marker>
                     {this.state.markers.map((marker,index) => (
                         <MapView.Marker
                             key={index}
