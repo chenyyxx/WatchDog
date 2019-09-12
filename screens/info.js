@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image} from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import {Header} from "react-native-elements";
+
 
 
 class InfoScreen extends React.Component {

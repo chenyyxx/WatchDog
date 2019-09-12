@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, Text, Alert, Dimensions} from "react-native";
+import {StyleSheet, View, Text, Dimensions} from "react-native";
 import MapView from "react-native-maps";
 import { Marker } from 'react-native-maps';
 
@@ -26,11 +26,8 @@ export default class MapScreen extends React.Component {
     static renderList(){
         let list=[];
         for (let i = 0; i < 21532; i++) {
-            // console.log(Data2014[0]);
             let diff= new Date()-new Date(Data2014[i].BeginDate);
-            // console.log(diff);
             let monthDiff=(parseFloat(diff)/(8.64*Math.pow(10,7)))-5*365;
-            console.log(a);
             if ( monthDiff <= 10.0 ){
                 list.push({
                     key: i,

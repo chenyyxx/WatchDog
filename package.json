@@ -1,6 +1,4 @@
 {
-  "name": "WatchDog",
-  "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -10,24 +8,24 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-web": "^0.11.4",
-    "react-native-elements": "^1.2.0",
-    "react-native-gesture-handler": "^1.4.1",
-    "react-native-scripts": "^2.0.1",
-    "react-native-svg": "^9.9.3",
-    "react-native-reanimated": "^1.0.1"
-  },
-  "devDependencies": {
-    "babel-preset-expo": "^6.0.0",
     "expo": "^34.0.1",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-circular-progress": "^1.3.0",
-    "react-native-maps": "^0.25.0",
+    "react-native-elements": "^1.2.0",
+    "react-native-gesture-handler": "~1.3.0",
+    "react-native-maps": "0.25.0",
+    "react-native-reanimated": "^1.1.0",
+    "react-native-screens": "^1.0.0-alpha.22",
+    "react-native-svg": "^9.9.3",
+    "react-native-web": "^0.11.4",
     "react-navigation": "^4.0.3",
     "react-navigation-tabs": "^2.4.2",
     "victory-native": "^33.0.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^6.0.0"
   },
   "private": true
 }
