@@ -1,5 +1,6 @@
 import React from 'react';
-import { createBottomTabNavigator, createAppContainer, TabBarBottom } from 'react-navigation';
+import { createBottomTabNavigator, BottomTabBar } from 'react-navigation-tabs';
+import { createAppContainer} from 'react-navigation';
 import HomeScreen from './screens/home';
 import { Icon, Button } from 'react-native-elements';
 import InfoScreen from './screens/info';
@@ -30,7 +31,7 @@ const TabNavigator = createBottomTabNavigator({
         return <Icon name={iconName} size={20} color={tintColor} />;
       },
     }),
-    tabBarComponent: TabBarBottom,
+    tabBarComponent: BottomTabBar,
     tabBarPosition: 'bottom',
     tabBarOptions: {
       activeTintColor: 'black',

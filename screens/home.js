@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {View, Text, Flexbox, StyleSheet, Modal, TouchableHighlight, Alert, ScrollView, Dimensions} from "react-native";
 import {Icon, Button, Card, Header} from 'react-native-elements';
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-import { HeaderBar } from 'react-native-simple-components';
+
 
 import Meter from "./components/meter";
 import Chart from "./components/chart";

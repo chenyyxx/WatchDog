@@ -1,9 +1,7 @@
 import React from "react";
 import {StyleSheet, View, Text, Alert, Dimensions} from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import { Location, Permissions } from 'expo'
-import MapMarker from "react-native-maps/lib/components/MapMarker";
-import { MapView } from "expo";
+import MapView from "react-native-maps";
+import { Marker } from 'react-native-maps';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_HEIGHT = height;
@@ -28,10 +26,12 @@ export default class MapScreen extends React.Component {
     static renderList(){
         let list=[];
         for (let i = 0; i < 21532; i++) {
+            // console.log(Data2014[0]);
             let diff= new Date()-new Date(Data2014[i].BeginDate);
-            let monthDiff=(parseFloat(diff)/(8.64*Math.pow(10,7)))-4*365;
-
-            if ( monthDiff <= 30.0 ){
+            // console.log(diff);
+            let monthDiff=(parseFloat(diff)/(8.64*Math.pow(10,7)))-5*365;
+            console.log(a);
+            if ( monthDiff <= 10.0 ){
                 list.push({
                     key: i,
                     title: Data2014[i].Description,
@@ -76,7 +76,7 @@ export default class MapScreen extends React.Component {
                         longitudeDelta: LONGITUDE_DELTA
                     }}
                 >
-                    <MapView.Marker
+                    <Marker
                         coordinate={{
                             latitude: 44.978399,
                             longitude: -93.271077,
@@ -84,9 +84,9 @@ export default class MapScreen extends React.Component {
                         <View style={styles.radius}>
                             <View style={styles.marker}/>
                         </View>
-                    </MapView.Marker>
+                    </Marker>
                     {this.state.markers.map((marker,index) => (
-                        <MapView.Marker
+                        <Marker
                             key={index}
                             coordinate={marker.coordinates}
                             title={marker.title}
