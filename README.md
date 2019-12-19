@@ -1,7 +1,10 @@
 # WatchDog
-Native app to show the real time safety index at your location.
+Native app to calculate and show the real time safety index at your location.
 
-## Use Case
+## Dev Team
+Yufan Ma
+Yuxiang Chen
+
 
 ## Project Description
 - React-Native/ Flutter for frontend (right now, it is React-Native)
