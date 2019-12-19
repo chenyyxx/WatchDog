@@ -7,13 +7,10 @@ Native app to calculate and show the real time safety index at your location.
 
 
 ## Project Description
-- React-Native/ Flutter for frontend (right now, it is React-Native)
+- React-Native frontend
 - Java/Go for backend
 - Mysql/MongoDB for data base
 
-## Project Demo
-
-## How to Use it
 
 ## TODO List for Future Work
 1. Integrate the Crime Data Explorer API from FBI by using provided API instead of local files.
