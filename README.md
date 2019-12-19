@@ -2,8 +2,8 @@
 Native app to calculate and show the real time safety index at your location.
 
 ## Dev Team
-Yufan Ma
-Yuxiang Chen
+- Yufan Ma
+- Yuxiang Chen
 
 
 ## Project Description
